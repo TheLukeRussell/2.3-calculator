@@ -66,4 +66,30 @@ button {
   color: #E7E7E8;
 }
 
+button:active {
+  background-color: #C6C6C6;
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: #E7E7E8;
+}
+
+#ac-button:active,
+#percentage-button:active,
+#plus-minus-button:active {
+  background-color: #616166;
+}
+
+#division-button:active,
+#equals-button:active,
+#minus-button:active,
+#multiply-button:active,
+#plus-button:active {
+  background-color: #C0802E;
+}
+
+button:focus {
+  outline: 0;
+}
+
 /*# sourceMappingURL=styles.css.map */
