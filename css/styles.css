@@ -2,10 +2,18 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #C6C6C6;
+}
+
 .container {
   margin-top: 50px;
+  width: 600px;
   border: 2pt solid black;
   padding: 0;
+  border-radius: 6px;
+  box-shadow: 3px 3px 67px 9px rgba(0, 0, 0, 0.75);
 }
 
 #results_bar {
