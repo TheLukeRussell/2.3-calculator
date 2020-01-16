@@ -19,6 +19,7 @@ body {
 #results_bar {
   border: 0;
   background-color: #2E2F34;
+  height: 200px;
 }
 
 #first_row div.col-3:not(:last-child) {
