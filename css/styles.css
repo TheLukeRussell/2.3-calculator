@@ -16,18 +16,16 @@ body {
   box-shadow: 3px 3px 67px 9px rgba(0, 0, 0, 0.75);
 }
 
-#calculator-screen {
-  border: 0;
-  background-color: #2E2F34;
-  width: 100%;
+#results-bar {
+  color: white;
 }
 
-#calculator-screen input {
+input {
   width: 100%;
   text-align: right;
   background-color: #2E2F34;
   border: none;
-  color: #E7E7E8;
+  color: white;
   font-size: 80px;
   padding-right: 20px;
 }

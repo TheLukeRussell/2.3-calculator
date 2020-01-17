@@ -7,7 +7,22 @@ const calculator = {
   waitingForSecondOperand: false,
   operator: null,
 };
-const buttons = document.querySelectorAll('button');
+
+function inputDigit(digit) {
+  const {
+    displayValue
+  } = calculator;
+  // Overwrite `displayValue` if the current value is '0'
+  calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+}
+function inputDecimal(dot) {
+  // If the `displayValue` does not contain a decimal point
+  if (!calculator.displayValue.includes(dot)) {
+    calculator.displayValue += dot;
+  }
+}
+
+// const buttons = document.querySelectorAll('button');
 // const numberButton = document.querySelectorAll('.digit');
 // const operationButton = document.querySelectorAll('.operator');
 // const equalsButton = document.querySelector('.data-equals');
@@ -15,7 +30,7 @@ const buttons = document.querySelectorAll('button');
 // const plusMinusButton = document.querySelector('.data-plus-minus');
 
 function updateDisplay() {
-  const display = document.querySelector('#calculator-screen');
+  const display = document.querySelector('#results-bar');
   display.value = calculator.displayValue;
 }
 //
@@ -31,7 +46,10 @@ updateDisplay();
 // console.log(buttons[i])
 // }
 
-const numbers = document.querySelectorAll('.digit');
+const digit = document.querySelectorAll('.digit');
+const operator = document.querySelectorAll('.operator');
+const decimal = document.querySelector('.decimal');
+const allClear = document.querySelector('.all-clear');
 // console.log('numbers', numbers);
 
 
@@ -58,49 +76,70 @@ const numbers = document.querySelectorAll('.digit');
 //
 // });
 
-for(let i = 0; i < numbers.length; i++) {
-  numbers[i].addEventListener('click', (event) => {
-      // (event.target.classList.contains('digit'))
-      console.log('digit', event.target.value);
-      // alert(`you pressed ${event.target.value}`);
-      return;
+for (let i = 0; i < operator.length; i++) {
+  operator[i].addEventListener('click', (event) => {
+    console.log('operator', event.target.value);
+    // alert(`you pressed operator value of ${event.target.value}`);
+    return;
   });
+}
+
+decimal.addEventListener('click', (event) => {
+  inputDecimal(event.target.value);
+  updateDisplay();
+  // alert(`you pressed the ${event.target.value}`);
+  return;
+});
+
+allClear.addEventListener('click', (event) => {
+console.log('allClear', event.target.value)
+  // alert(`you pressed ${event.target.value}`);
+  return;
+});
+
+for (let i = 0; i < digit.length; i++) {
+  digit[i].addEventListener('click', (event) => {
+  inputDigit(event.target.value);
+  updateDisplay ();
+  return;
+});
 }
 
 
 
-///////IN CLASS DEMO//////
-// for(let i = 0; i < buttons.length; i++) {
-// buttons[i].addEventListener('click', (event) => {
-//   console.log('value', event.target.value);
-// });
-// }
-//
-// let pushNumber = (event) => {
-//   console.log('you pressed the number $event.target.value');
-// }
-///////IN CLASS DEMO////////
+
+  ///////IN CLASS DEMO//////
+  // for(let i = 0; i < buttons.length; i++) {
+  // buttons[i].addEventListener('click', (event) => {
+  //   console.log('value', event.target.value);
+  // });
+  // }
+  //
+  // let pushNumber = (event) => {
+  //   console.log('you pressed the number $event.target.value');
+  // }
+  ///////IN CLASS DEMO////////
 
 
-//convert number to string// Number('123') = 123
-//
-// let age = 21 //change this value//
-//
-// if (age >= 21) {
-//   console.log('you may enter')
-// } else {
-//   console.log('try again next year!')
-// }
-//
-// if(age >= 21) {
-//   console.log('enter');
-// } else if (age === 20) {
-//   console.log('try again');
-// } else {
-//   console.log('mom')
-// }
-//
-// let myFunction = (a, b) => {
-//   return a + b;
-// }
-// console.log(myFunction(5,6));
+  //convert number to string// Number('123') = 123
+  //
+  // let age = 21 //change this value//
+  //
+  // if (age >= 21) {
+  //   console.log('you may enter')
+  // } else {
+  //   console.log('try again next year!')
+  // }
+  //
+  // if(age >= 21) {
+  //   console.log('enter');
+  // } else if (age === 20) {
+  //   console.log('try again');
+  // } else {
+  //   console.log('mom')
+  // }
+  //
+  // let myFunction = (a, b) => {
+  //   return a + b;
+  // }
+  // console.log(myFunction(5,6))
