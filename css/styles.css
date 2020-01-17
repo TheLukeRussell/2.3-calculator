@@ -16,7 +16,7 @@ body {
   box-shadow: 3px 3px 67px 9px rgba(0, 0, 0, 0.75);
 }
 
-#results_bar {
+#calculator-screen {
   border: 0;
   background-color: #2E2F34;
   width: 100%;
