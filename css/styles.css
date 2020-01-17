@@ -19,7 +19,17 @@ body {
 #results_bar {
   border: 0;
   background-color: #2E2F34;
-  height: 200px;
+  width: 100%;
+}
+
+#calculator-screen input {
+  width: 100%;
+  text-align: right;
+  background-color: #2E2F34;
+  border: none;
+  color: #E7E7E8;
+  font-size: 80px;
+  padding-right: 20px;
 }
 
 #first_row div.col-3:not(:last-child) {
@@ -75,17 +85,11 @@ button:active {
   color: #E7E7E8;
 }
 
-#ac-button:active,
-#percentage-button:active,
-#plus-minus-button:active {
+#ac-button:active, #plus-minus-button:active, #percentage-button:active {
   background-color: #616166;
 }
 
-#division-button:active,
-#equals-button:active,
-#minus-button:active,
-#multiply-button:active,
-#plus-button:active {
+#multiply-button:active, #division-button:active, #minus-button:active, #plus-button:active, #equals-button:active {
   background-color: #C0802E;
 }
 
