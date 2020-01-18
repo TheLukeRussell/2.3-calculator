@@ -1,112 +1,82 @@
-// alert("hello");
-// const calculator = document.querySelector('.calculator');
-// const buttons = document.querySelector('.calculator-buttons');
-const calculator = {
-  displayValue: '0',
-  firstOperand: null,
-  waitingForSecondOperand: false,
-  operator: null,
-};
+(function() {
+  'use strict';
 
-function inputDigit(digit) {
-  const {
-    displayValue
-  } = calculator;
-  // Overwrite `displayValue` if the current value is '0'
-  calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
-}
-function inputDecimal(dot) {
-  // If the `displayValue` does not contain a decimal point
-  if (!calculator.displayValue.includes(dot)) {
-    calculator.displayValue += dot;
+  const calculator = {
+    displayValue: '0',
+    firstOperand: null,
+    waitingForSecondOperand: false,
+    operator: null,
+  };
+
+  function pushDigit(digit) {
+    const displayValue = calculator.displayValue;
+    // Overwrite `displayValue` if the current value is '0' or adds to current display
+    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+    console.log(calculator);
   }
-}
 
-// const buttons = document.querySelectorAll('button');
-// const numberButton = document.querySelectorAll('.digit');
-// const operationButton = document.querySelectorAll('.operator');
-// const equalsButton = document.querySelector('.data-equals');
-// const allClearButton = document.querySelector('.data-all-clear');
-// const plusMinusButton = document.querySelector('.data-plus-minus');
+  function pushDecimal(dot) {
+    // If the `displayValue` does not contain a decimal point
+    if (!calculator.displayValue.includes(dot)) {
+      //adds the decimal point or dot
+      calculator.displayValue += dot;
+    }
+  }
 
-function updateDisplay() {
-  const display = document.querySelector('#results-bar');
-  display.value = calculator.displayValue;
-}
-//
-updateDisplay();
+  function handleOperator(nextOperator) {
+    const {firstOperand, displayValue, operator } = calculator
+    const inputValue = parseFloat(displayValue);
 
-// for(let t=0, i < $buttons.length; i = i + 1){
-//   buttons[i].addEventListener('click', () => {
-//     console.log('event', event)
-//   });
-// }
-//
-// for(let i = 0; i < buttons.length; i++) {
-// console.log(buttons[i])
-// }
+    if (firstOperand === null) {
+      calculator.firstOperand = inputValue;
+    }
 
-const digit = document.querySelectorAll('.digit');
-const operator = document.querySelectorAll('.operator');
-const decimal = document.querySelector('.decimal');
-const allClear = document.querySelector('.all-clear');
-// console.log('numbers', numbers);
+    calculator.waitingForSecondOperand = true;
+    calculator.operator = nextOperator;
+    console.log(calculator);
+  }
 
+  function updateDisplay() {
+    const display = document.querySelector('#results-bar');
+    display.value = calculator.displayValue;
+  }
+  //
+  updateDisplay();
 
-// keys.addEventListener('click', (event) => {
-//     (event.target.classList.contains('operator'))
-//     console.log('operator', event.target.value);
-//     // alert(`you pressed ${event.target.value}`);
-//     return;
-//
-//   });
-//
-// keys.addEventListener('click', (event) => {
-//     (event.target.classList.contains('decimal'))
-//     console.log('decimal', event.target.value);
-//     // alert(`you pressed ${event.target.value}`);
-//     return;
-//
-// });
-// keys.addEventListener('click', (event) => {
-//     (event.target.classList.contains('all-clear'))
-//     console.log('clear', event.target.value);
-//     // alert(`you pressed ${event.target.value}`);
-//     return;
-//
-// });
+  const operator = document.querySelectorAll('.operator');
+  const decimal = document.querySelector('.decimal');
+  const allClear = document.querySelector('.all-clear');
+  const digit = document.querySelectorAll('.digit');
+  // console.log('numbers', numbers);
 
-for (let i = 0; i < operator.length; i++) {
-  operator[i].addEventListener('click', (event) => {
-    console.log('operator', event.target.value);
-    // alert(`you pressed operator value of ${event.target.value}`);
+  for (let i = 0; i < operator.length; i++) {
+    operator[i].addEventListener('click', (event) => {
+    handleOperator(event.target.value);
+      // alert(`you pressed operator value of ${event.target.value}`);
+      return;
+    });
+  }
+
+  decimal.addEventListener('click', (event) => {
+    pushDecimal(event.target.value);
+    updateDisplay();
+    // alert(`you pressed the ${event.target.value}`);
     return;
   });
-}
 
-decimal.addEventListener('click', (event) => {
-  inputDecimal(event.target.value);
-  updateDisplay();
-  // alert(`you pressed the ${event.target.value}`);
-  return;
-});
+  allClear.addEventListener('click', (event) => {
+    console.log('allClear', event.target.value)
+    // alert(`you pressed ${event.target.value}`);
+    return;
+  });
 
-allClear.addEventListener('click', (event) => {
-console.log('allClear', event.target.value)
-  // alert(`you pressed ${event.target.value}`);
-  return;
-});
-
-for (let i = 0; i < digit.length; i++) {
-  digit[i].addEventListener('click', (event) => {
-  inputDigit(event.target.value);
-  updateDisplay ();
-  return;
-});
-}
-
-
-
+  for (let i = 0; i < digit.length; i++) {
+    digit[i].addEventListener('click', (event) => {
+      pushDigit(event.target.value);
+      updateDisplay();
+      return;
+    });
+  }
 
   ///////IN CLASS DEMO//////
   // for(let i = 0; i < buttons.length; i++) {
@@ -143,3 +113,4 @@ for (let i = 0; i < digit.length; i++) {
   //   return a + b;
   // }
   // console.log(myFunction(5,6))
+}())
