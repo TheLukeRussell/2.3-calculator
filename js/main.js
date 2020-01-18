@@ -9,12 +9,17 @@
   };
 
   function pushDigit(digit) {
-    const displayValue = calculator.displayValue;
+    const { displayValue, waitingForSecondOperand } = calculator;
     // Overwrite `displayValue` if the current value is '0' or adds to current display
-    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
-    console.log(calculator);
-  }
 
+    if (waitingForSecondOperand === true) {
+      calculator.displayValue = digit;
+      calculator. waitingForSecondOperand = false;
+    } else {
+    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+  }
+  console.log(calculator);
+}
   function pushDecimal(dot) {
     // If the `displayValue` does not contain a decimal point
     if (!calculator.displayValue.includes(dot)) {
