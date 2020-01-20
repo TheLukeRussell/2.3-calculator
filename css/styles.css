@@ -16,7 +16,7 @@ body {
   box-shadow: 3px 3px 67px 9px rgba(0, 0, 0, 0.75);
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 10px) {
   .container {
     width: 100%;
   }
@@ -36,10 +36,6 @@ body {
     width: 40%;
   }
 }
-#results-bar {
-  color: white;
-}
-
 input {
   width: 100%;
   text-align: right;

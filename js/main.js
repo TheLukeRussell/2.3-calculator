@@ -88,7 +88,7 @@
   }
 
   function updateDisplay() {
-    const display = document.querySelector('.calculator-display');
+    const display = document.querySelector('input');
     display.value = calculator.displayValue;
   }
 
