@@ -68,15 +68,13 @@
 
     '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
 
-    '+/-': (firstOperand) => firstOperand * (-1),
-
     '/': (firstOperand, secondOperand) => firstOperand / secondOperand,
 
     '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
 
     '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
 
-    '=': (firstOperand, secondOperand) => secondOperand
+    '=': (firstOperand, secondOperand) => secondOperand,
   };
 
   function resetCalculator() {
@@ -98,13 +96,12 @@
   const decimal = document.querySelector('.decimal');
   const allClear = document.querySelector('.all-clear');
   const digit = document.querySelectorAll('.digit');
-  // const opposite = document.querySelector()
-  // console.log('numbers', numbers);
+
 
   for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener('click', (event) => {
       handleOperator(event.target.value);
-
+      updateDisplay();
       // alert(`you pressed operator value of ${event.target.value}`);
       return;
     });
